@@ -14,8 +14,12 @@ function getTime(time) {
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
 
-  return `${years ? years + "y " : ""}${months ? months + "m " : ""}${days ? days + "d " : ""}${hours}:${minutes}:${seconds}`;
+  // Ensure double-digit formatting for hours, minutes, and seconds
+  const format = (num) => String(num).padStart(2, "0");
+
+  return `${years ? years + "y " : ""}${months ? months + "m " : ""}${days ? days + "d " : ""}${format(hours)}:${format(minutes)}:${format(seconds)}`;
 }
+
 
 
 const removeActiveClass = () => {
